@@ -1,0 +1,32 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    // {
+    //   "name": "Next.js: debug server-side",
+    //   "type": "node-terminal",
+    //   "request": "launch",
+    //   "command": "npm run dev"
+    // },
+    // {
+    //   "name": "Next.js: debug client-side",
+    //   "type": "chrome",
+    //   "request": "launch",
+    //   "url": "http://localhost:3000"
+    // },
+    {
+      "name": "Next.js: debug full stack",
+      "type": "node-terminal",
+      "request": "launch",
+      // "command": "NODE_OPTIONS='--inspect=3000' npm run dev", // npm run dev 명령어로 실행했을 때 루트 경로에 404에러 발생하는 경우는 이 command를 사용
+      "command": "npm run dev",
+      "serverReadyAction": {
+        "pattern": "started server on .+, url: (https?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
+      }
+    }
+  ]
+}
