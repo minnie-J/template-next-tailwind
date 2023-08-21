@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { pretendard } from "@/fonts";
 import "./globals.css";
+
+import MainHeader from "@/components/organisms/MainHeader";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,16 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={pretendard.className}>
         <div className="flex h-full flex-col">
-          <nav className="flex h-12 items-center border-b  bg-white px-5 text-black">
-            <ul className="flex space-x-3">
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/test">Test</Link>
-              </li>
-            </ul>
-          </nav>
+          <MainHeader />
           <div className="flex grow">{children}</div>
         </div>
       </body>
