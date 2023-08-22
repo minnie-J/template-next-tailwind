@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { pretendard } from "@/fonts";
+import { pretendard } from "@/public/fonts";
 import StyledComponentsRegistry from "@/lib/AntdRegistry";
 import "./globals.css";
 
@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={pretendard.className}>
         <StyledComponentsRegistry>
-          <div className="flex h-full flex-col">
+          <div className="flex h-full w-full flex-col">
             <MainHeader />
             <div className="flex grow">{children}</div>
           </div>
