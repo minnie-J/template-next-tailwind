@@ -1,0 +1,18 @@
+{
+  "mainDatas": [
+    { "id": 0, "name": "Main 1" },
+    { "id": 1, "name": "Main 2" },
+    { "id": 2, "name": "Main 3" },
+    { "id": 3, "name": "Main 4" },
+    { "id": 4, "name": "Main 5" },
+    { "id": 5, "name": "Main 6" }
+  ],
+  "subDatas": [
+    { "mainId": 0, "id": 0, "name": "Sub 1" },
+    { "mainId": 0, "id": 1, "name": "Sub 2" },
+    { "mainId": 1, "id": 2, "name": "Sub 3" },
+    { "mainId": 1, "id": 3, "name": "Sub 4" },
+    { "mainId": 1, "id": 4, "name": "Sub 5" },
+    { "mainId": 2, "id": 5, "name": "Sub 6" }
+  ]
+}

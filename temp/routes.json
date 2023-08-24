@@ -1,0 +1,3 @@
+{
+  "/mains/:mainId/subs": "/mains?mainId=:mainId"
+}
