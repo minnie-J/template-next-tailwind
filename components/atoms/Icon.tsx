@@ -1,4 +1,5 @@
 import {
+  ApartmentOutlined,
   ExperimentFilled,
   FileUnknownOutlined,
   HomeFilled,
@@ -7,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import { CSSProperties } from "react";
 
-export type IconIdType = "loading" | "home" | "test" | "unknown";
+export type IconIdType = "loading" | "home" | "test" | "tree" | "unknown";
 
 const Icon = ({
   iconId = "unknown",
@@ -30,6 +31,7 @@ const Icon = ({
 
   if (iconId === "test") return <ExperimentFilled {...props} />;
   if (iconId === "loading") return <LoadingOutlined {...props} />;
+  if (iconId === "tree") return <ApartmentOutlined {...props} />;
 
   return <FileUnknownOutlined {...props} />;
 };
