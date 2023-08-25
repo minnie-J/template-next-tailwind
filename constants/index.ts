@@ -21,3 +21,8 @@ export const MAIN_MENUS: Array<{
     iconId: "tree",
   },
 ];
+
+export const DETAIL_MENUS: Array<{ name: string; key: string }> = [
+  { name: "Detail Menu 1", key: "sub1" },
+  { name: "Detail Menu 2", key: "sub2" },
+];
