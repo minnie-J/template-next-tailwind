@@ -7,12 +7,20 @@
     { "id": 4, "name": "Main 5" },
     { "id": 5, "name": "Main 6" }
   ],
-  "subDatas": [
-    { "mainId": 0, "id": 0, "name": "Sub 1" },
-    { "mainId": 0, "id": 1, "name": "Sub 2" },
-    { "mainId": 1, "id": 2, "name": "Sub 3" },
-    { "mainId": 1, "id": 3, "name": "Sub 4" },
-    { "mainId": 1, "id": 4, "name": "Sub 5" },
-    { "mainId": 2, "id": 5, "name": "Sub 6" }
+  "sub1Datas": [
+    { "mainId": 0, "id": 0, "name": "Sub1 1" },
+    { "mainId": 0, "id": 1, "name": "Sub1 2" },
+    { "mainId": 1, "id": 2, "name": "Sub1 3" },
+    { "mainId": 1, "id": 3, "name": "Sub1 4" },
+    { "mainId": 1, "id": 4, "name": "Sub1 5" },
+    { "mainId": 2, "id": 5, "name": "Sub1 6" }
+  ],
+  "sub2Datas": [
+    { "mainId": 0, "id": 0, "name": "Sub2 1" },
+    { "mainId": 0, "id": 1, "name": "Sub2 2" },
+    { "mainId": 1, "id": 2, "name": "Sub2 3" },
+    { "mainId": 1, "id": 3, "name": "Sub2 4" },
+    { "mainId": 1, "id": 4, "name": "Sub2 5" },
+    { "mainId": 2, "id": 5, "name": "Sub2 6" }
   ]
 }

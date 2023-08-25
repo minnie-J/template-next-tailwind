@@ -1,3 +1,5 @@
 {
-  "/mains/:mainId/subs": "/mains?mainId=:mainId"
+  "/mains": "/mainDatas",
+  "/mains/:mainId/subs1": "/sub1Datas?mainId=:mainId",
+  "/mains/:mainId/subs2": "/sub2Datas?mainId=:mainId"
 }
