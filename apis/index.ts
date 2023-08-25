@@ -5,12 +5,10 @@ export const listMain = () =>
     .then((res) => res.json())
     .catch((error) => console.log("error: ", error));
 
-export const listSub1 = ({ id }: { id: string }) =>
-  fetch(`${API_BASE_URL}/mains/${id}/subs1`)
-    .then((res) => res.json())
-    .catch((error) => console.log("error: ", error));
+export const listSub = ({ id, tab }: { id?: string; tab: string }) => {
+  const cat = tab === "sub1" ? "subs1" : "subs2";
 
-export const listSub2 = ({ id }: { id: string }) =>
-  fetch(`${API_BASE_URL}/mains/${id}/subs2`)
+  return fetch(`${API_BASE_URL}/mains/${id}/${cat}`)
     .then((res) => res.json())
     .catch((error) => console.log("error: ", error));
+};
