@@ -15,4 +15,9 @@ export const MAIN_MENUS: Array<{
     url: "/test",
     iconId: "test",
   },
+  {
+    name: "Tree",
+    url: "/tree",
+    iconId: "tree",
+  },
 ];
