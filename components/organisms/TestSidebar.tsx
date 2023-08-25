@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import classNames from "classnames";
 
@@ -20,6 +20,9 @@ const TestSidebar = ({
   });
 
   const params = useParams();
+  const { push } = useRouter();
+
+  const onClickMenu = (id: string) => push(`/test/${id}`);
 
   return (
     <div className={classNames("flex", "h-full", "grow", "flex-col")}>
@@ -43,6 +46,7 @@ const TestSidebar = ({
                 "text-blue-500": params.id === `${id}`,
               },
             )}
+            onClick={() => onClickMenu(id)}
           >
             {name}
           </div>
