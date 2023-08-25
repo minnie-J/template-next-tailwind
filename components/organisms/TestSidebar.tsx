@@ -1,18 +1,24 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 
-const TestSidebar = () => {
+import { listMain } from "@/apis";
+
+const TestSidebar = ({
+  initMainDatas,
+}: {
+  initMainDatas: Array<{ id: string; name: string }>;
+}) => {
   const { data: mainDatas, isLoading } = useQuery<
-    Array<{ id: number; name: string }>
+    Array<{ id: string; name: string }>
   >({
     queryKey: ["mainDatas"],
-    queryFn: async () => {
-      return await fetch("http://localhost:4000/mainDatas").then((res) =>
-        res.json(),
-      );
-    },
+    queryFn: listMain,
+    initialData: initMainDatas,
   });
+
+  const { id } = useParams();
 
   return (
     <div>
