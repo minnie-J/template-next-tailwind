@@ -1,10 +1,23 @@
+import classNames from "classnames";
+
 const Wireframe = ({ children }: { children: string }) => {
   return (
     <div
-      className="outline-25 flex h-full w-full
-      items-center justify-center border
-      border-[#ccc] text-lg font-semibold text-gray-500 outline
-    outline-[#ccc]"
+      className={classNames(
+        "outline-25",
+        "flex",
+        "h-full",
+        "w-full",
+        "items-center",
+        "justify-center",
+        "border",
+        "border-[#ccc]",
+        "text-lg",
+        "font-semibold",
+        "text-gray-500",
+        "outline",
+        "outline-[#ccc]",
+      )}
       style={{
         background: `linear-gradient(
       to top right,

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import classNames from "classnames";
 
 import Icon, { IconIdType } from "@/components/atoms/Icon";
 
@@ -14,7 +15,7 @@ const MainMenuItem = ({
   return (
     <li>
       <Link href={url}>
-        <div className="flex items-center space-x-1">
+        <div className={classNames("flex", "items-center", "space-x-1")}>
           <Icon iconId={iconId} className="text-xs" />
           <span className="text-sm">{name}</span>
         </div>

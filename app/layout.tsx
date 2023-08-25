@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { AntdResistry, TanstackQueryProvider } from "@/lib";
+import classNames from "classnames";
 import { pretendard } from "@/public/fonts";
+import { AntdResistry, TanstackQueryProvider } from "@/lib";
 import "./globals.css";
 
 import MainHeader from "@/components/organisms/MainHeader";
@@ -21,9 +22,9 @@ export default function RootLayout({
       <body className={pretendard.className}>
         <TanstackQueryProvider>
           <AntdResistry>
-            <div className="flex h-full w-full flex-col">
+            <div className={classNames("flex", "h-full", "w-full", "flex-col")}>
               <MainHeader />
-              <div className="flex grow">{children}</div>
+              <div className={classNames("flex", "grow")}>{children}</div>
             </div>
           </AntdResistry>
         </TanstackQueryProvider>

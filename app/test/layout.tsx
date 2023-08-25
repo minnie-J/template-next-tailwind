@@ -1,10 +1,11 @@
 import { ReactNode } from "react";
 import { Metadata } from "next";
+import classNames from "classnames";
 
 import { listMain } from "@/apis";
 
+import SplitLayout from "@/components/templates/SplitLayout";
 import TestSidebar from "@/components/organisms/TestSidebar";
-import HorizontalLayout from "@/components/templates/HorizontalLayout";
 
 export const metadata: Metadata = {
   title: "Test",
@@ -14,16 +15,18 @@ export const metadata: Metadata = {
 const TestLayout = async ({ children }: { children: ReactNode }) => {
   const initMainDatas = await listMain();
 
+  const { Element } = SplitLayout;
+
   return (
-    <section className="flex grow bg-white text-black">
-      <HorizontalLayout>
-        <HorizontalLayout.LeftArea width={300}>
+    <section className={classNames("flex", "grow", "bg-white", "text-black")}>
+      <SplitLayout>
+        <Element width={300}>
           <div className="w-full">
             <TestSidebar initMainDatas={initMainDatas} />
           </div>
-        </HorizontalLayout.LeftArea>
-        <HorizontalLayout.RightArea>{children}</HorizontalLayout.RightArea>
-      </HorizontalLayout>
+        </Element>
+        <Element>{children}</Element>
+      </SplitLayout>
     </section>
   );
 };
