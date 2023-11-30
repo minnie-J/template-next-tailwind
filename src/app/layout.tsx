@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import classNames from "classnames";
 import { TanstackQueryProvider } from "@/lib";
+import { inter } from "fonts";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 import MainHeader from "@/components/organisms/MainHeader";
 
