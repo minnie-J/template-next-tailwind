@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import classNames from "classnames";
-import { TanstackQueryProvider } from "@/lib";
+
 import { inter } from "fonts";
+import { TanstackQueryProvider } from "@/lib";
 import "./globals.css";
 
 import MainHeader from "@/components/organisms/MainHeader";
