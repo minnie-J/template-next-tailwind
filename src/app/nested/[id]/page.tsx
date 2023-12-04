@@ -14,7 +14,7 @@ import SubMenuItem from "@/components/atoms/SubMenuItem";
 const tabKeys = DETAIL_MENUS.map(({ key }) => key);
 type TabType = (typeof tabKeys)[number];
 
-const TestDetailPage = () => {
+const DetailPage = () => {
   const { id } = useParams();
 
   const [currentTab, setCurrentTab] = useState<TabType>("sub1");
@@ -34,7 +34,7 @@ const TestDetailPage = () => {
             "grow",
             "h-full",
             "bg-gray-200",
-            "text-gray-400",
+            "text-gray-400"
           )}
         >
           {DETAIL_MENUS.map(({ name, key }) => (
@@ -58,4 +58,4 @@ const TestDetailPage = () => {
   );
 };
 
-export default TestDetailPage;
+export default DetailPage;

@@ -1,7 +1,7 @@
 import Wireframe from "@/components/atoms/Wireframe";
 
-const TreePage = () => {
+const TempPage = () => {
   return <Wireframe>Tree</Wireframe>;
 };
 
-export default TreePage;
+export default TempPage;

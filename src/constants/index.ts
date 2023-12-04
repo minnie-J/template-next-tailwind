@@ -11,14 +11,14 @@ export const MAIN_MENUS: Array<{
     iconId: "home",
   },
   {
-    name: "Test",
-    url: "/test",
-    iconId: "test",
+    name: "Nested Menus",
+    url: "/nested",
+    iconId: "nested",
   },
   {
-    name: "Tree",
-    url: "/tree",
-    iconId: "tree",
+    name: "Temp",
+    url: "/temp",
+    iconId: "test",
   },
 ];
 

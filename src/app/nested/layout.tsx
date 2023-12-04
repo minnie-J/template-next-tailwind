@@ -8,11 +8,15 @@ import SplitLayout from "@/components/templates/SplitLayout";
 import TestSidebar from "@/components/organisms/TestSidebar";
 
 export const metadata: Metadata = {
-  title: "Test",
-  description: "Test 페이지",
+  title: "Nested Menus",
+  description: "중첩 메뉴 여러 개 넣은 테스트 페이지",
 };
 
-const TestLayout = async ({ children }: { children: ReactNode }) => {
+export default async function NestedLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const initMainDatas = await listMain();
 
   const { Element } = SplitLayout;
@@ -29,6 +33,4 @@ const TestLayout = async ({ children }: { children: ReactNode }) => {
       </SplitLayout>
     </section>
   );
-};
-
-export default TestLayout;
+}

@@ -1,7 +1,5 @@
 import Wireframe from "@/components/atoms/Wireframe";
 
-const TestPage = () => {
+export default function NestedPage() {
   return <Wireframe>No Data</Wireframe>;
-};
-
-export default TestPage;
+}

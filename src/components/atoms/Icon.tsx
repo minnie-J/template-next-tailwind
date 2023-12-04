@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import {
   AiOutlineApartment,
   AiFillExperiment,
@@ -6,9 +7,15 @@ import {
   AiOutlineHome,
   AiOutlineLoading,
 } from "react-icons/ai";
-import { CSSProperties } from "react";
+import { BsListNested } from "react-icons/bs";
 
-export type IconIdType = "loading" | "home" | "test" | "tree" | "unknown";
+export type IconIdType =
+  | "unknown"
+  | "loading"
+  | "home"
+  | "test"
+  | "tree"
+  | "nested";
 
 const Icon = ({
   iconId = "unknown",
@@ -32,6 +39,7 @@ const Icon = ({
   if (iconId === "test") return <AiFillExperiment {...props} />;
   if (iconId === "loading") return <AiOutlineLoading {...props} />;
   if (iconId === "tree") return <AiOutlineApartment {...props} />;
+  if (iconId === "nested") return <BsListNested {...props} />;
 
   return <AiOutlineFileUnknown {...props} />;
 };

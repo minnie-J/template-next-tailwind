@@ -22,7 +22,7 @@ const TestSidebar = ({
   const params = useParams();
   const { push } = useRouter();
 
-  const onClickMenu = (id: string) => push(`/test/${id}`);
+  const onClickMenu = (id: string) => push(`/nested/${id}`);
 
   return (
     <div className={classNames("flex", "h-full", "grow", "flex-col")}>
@@ -44,7 +44,7 @@ const TestSidebar = ({
               {
                 "font-bold": params.id === `${id}`,
                 "text-blue-500": params.id === `${id}`,
-              },
+              }
             )}
             onClick={() => onClickMenu(id)}
           >
