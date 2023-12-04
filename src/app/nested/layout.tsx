@@ -10,6 +10,18 @@ import TestSidebar from "@/components/organisms/TestSidebar";
 export const metadata: Metadata = {
   title: "Nested Menus",
   description: "중첩 메뉴 여러 개 넣은 테스트 페이지",
+  icons: {
+    icon: [
+      {
+        media: "(prefers-color-scheme: light)",
+        url: "/images/nested-black.svg",
+      },
+      {
+        media: "(prefers-color-scheme: dark)",
+        url: "/images/nested-white.svg",
+      },
+    ],
+  },
 };
 
 export default async function NestedLayout({

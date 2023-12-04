@@ -10,6 +10,7 @@ import MainHeader from "@/components/organisms/MainHeader";
 export const metadata: Metadata = {
   title: "Home",
   description: "루트 페이지",
+  icons: "/images/favicon.ico",
 };
 
 export default function RootLayout({
@@ -19,9 +20,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/images/favicon.ico" sizes="any" />
-      </head>
       <body className={inter.className}>
         <TanstackQueryProvider>
           <div className={classNames("flex", "h-full", "w-full", "flex-col")}>
