@@ -13,10 +13,11 @@ export default function Providers({ children }: { children: ReactNode }) {
             refetchOnMount: false,
             refetchOnWindowFocus: false,
             retry: false,
-            gcTime: 0,
+            staleTime: 3 * 1000,
+            gcTime: 60 * 1000,
           },
         },
-      }),
+      })
   );
 
   return (

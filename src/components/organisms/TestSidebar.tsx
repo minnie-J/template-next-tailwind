@@ -6,17 +6,12 @@ import classNames from "classnames";
 
 import { listMain } from "@/apis";
 
-const TestSidebar = ({
-  initMainDatas,
-}: {
-  initMainDatas: Array<{ id: string; name: string }>;
-}) => {
+const TestSidebar = () => {
   const { data: mainDatas, isLoading } = useQuery<
     Array<{ id: string; name: string }>
   >({
-    queryKey: ["mainDatas"],
+    queryKey: [listMain.name],
     queryFn: listMain,
-    initialData: initMainDatas,
   });
 
   const params = useParams();

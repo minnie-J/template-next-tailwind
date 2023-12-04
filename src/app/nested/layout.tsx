@@ -6,6 +6,11 @@ import { listMain } from "@/apis";
 
 import SplitLayout from "@/components/templates/SplitLayout";
 import TestSidebar from "@/components/organisms/TestSidebar";
+import {
+  HydrationBoundary,
+  QueryClient,
+  dehydrate,
+} from "@tanstack/react-query";
 
 export const metadata: Metadata = {
   title: "Nested Menus",
@@ -29,7 +34,13 @@ export default async function NestedLayout({
 }: {
   children: ReactNode;
 }) {
-  const initMainDatas = await listMain();
+  const queryClient = new QueryClient();
+
+  // NOTE data prefetch
+  await queryClient.prefetchQuery({
+    queryKey: [listMain.name],
+    queryFn: listMain,
+  });
 
   const { Element } = SplitLayout;
 
@@ -38,7 +49,9 @@ export default async function NestedLayout({
       <SplitLayout>
         <Element width={300}>
           <div className="w-full">
-            <TestSidebar initMainDatas={initMainDatas} />
+            <HydrationBoundary state={dehydrate(queryClient)}>
+              <TestSidebar />
+            </HydrationBoundary>
           </div>
         </Element>
         <Element>{children}</Element>
