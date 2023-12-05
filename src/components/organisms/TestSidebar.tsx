@@ -39,7 +39,7 @@ const TestSidebar = () => {
               {
                 "font-bold": params.id === `${id}`,
                 "text-blue-500": params.id === `${id}`,
-              }
+              },
             )}
             onClick={() => onClickMenu(id)}
           >

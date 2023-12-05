@@ -36,8 +36,8 @@ const Element = ({
         height
           ? { height: `${height}px`, minHeight: `${height}px` }
           : width
-          ? { width: `${width}px`, minWidth: `${width}px` }
-          : { flexGrow: 1 }
+            ? { width: `${width}px`, minWidth: `${width}px` }
+            : { flexGrow: 1 }
       }
     >
       {children}
