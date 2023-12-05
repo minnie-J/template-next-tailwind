@@ -19,7 +19,7 @@ const DetailPage = () => {
 
   const [currentTab, setCurrentTab] = useState<TabType>("sub1");
 
-  const { data, isLoading } = useQuery<Array<{ id: string; name: string }>>({
+  const { data } = useQuery<Array<{ id: string; name: string }>>({
     queryKey: ["subData", { id, tab: currentTab }],
     queryFn: () => listSub({ id: `${id}`, tab: currentTab }),
   });
