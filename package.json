@@ -7,7 +7,8 @@
     "dev-with-mockapi": "npx json-server ./temp/data.json --port 4000 --delay 200 --routes ./temp/routes.json & next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.10.0",
@@ -30,6 +31,7 @@
     "postcss": "^8",
     "prettier": "^3.1.0",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "husky": "^8.0.0"
   }
 }
