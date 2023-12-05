@@ -34,7 +34,7 @@ const DetailPage = () => {
             "grow",
             "h-full",
             "bg-gray-200",
-            "text-gray-400",
+            "text-gray-400"
           )}
         >
           {DETAIL_MENUS.map(({ name, key }) => (
