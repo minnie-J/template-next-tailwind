@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "\n>> Pre-push Hook: Checking branch name...\n"
+
+# 현재 체크아웃된 브랜치
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+# 직접 push하면 안되는 보호 브랜치
+PROTECTED_BRANCHES="main dev"
+
+echo "보호 브랜치(들): $PROTECTED_BRANCHES"
+echo "현재 브랜치: $CURRENT_BRANCH\n"
+
+for BRANCH in $PROTECTED_BRANCHES
+do
+  # 현재 브랜치가 보호 브랜치면 push 취소 처리
+  if [ "$BRANCH" = "$CURRENT_BRANCH" ]
+  then
+    echo "🚫 보호 브랜치에 직접 push할 수 없습니다."
+    echo "🚫 신규 브랜치로부터 push한 후 PR해주세요!\n"
+    exit 1
+    break
+  fi
+done
+
+echo ">> Finish checking branch name.\n"
+
+exit 0
