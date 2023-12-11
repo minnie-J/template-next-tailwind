@@ -11,8 +11,8 @@ export const MAIN_MENUS: Array<{
     iconId: "home",
   },
   {
-    name: "Nested Menus",
-    url: "/nested",
+    name: "Prefetch Example",
+    url: "/prefetch",
     iconId: "nested",
   },
   {

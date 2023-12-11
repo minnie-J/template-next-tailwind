@@ -13,7 +13,7 @@ import {
 } from "@tanstack/react-query";
 
 export const metadata: Metadata = {
-  title: "Nested Menus",
+  title: "Nested Menus(Prefetch)",
   description: "중첩 메뉴 여러 개 넣은 테스트 페이지",
   icons: {
     icon: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function NestedLayout({
+export default async function PrefetchLayout({
   children,
 }: {
   children: ReactNode;
@@ -49,6 +49,7 @@ export default async function NestedLayout({
       <SplitLayout>
         <Element width={300}>
           <div className="w-full">
+            {/* NOTE SSR */}
             <HydrationBoundary state={dehydrate(queryClient)}>
               <TestSidebar />
             </HydrationBoundary>
