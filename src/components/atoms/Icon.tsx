@@ -7,7 +7,7 @@ import {
   AiOutlineHome,
   AiOutlineLoading,
 } from "react-icons/ai";
-import { BsListNested } from "react-icons/bs";
+import { BsListNested, BsListUl } from "react-icons/bs";
 
 export type IconIdType =
   | "unknown"
@@ -15,7 +15,8 @@ export type IconIdType =
   | "home"
   | "test"
   | "tree"
-  | "nested";
+  | "nested"
+  | "list";
 
 const Icon = ({
   iconId = "unknown",
@@ -40,6 +41,7 @@ const Icon = ({
   if (iconId === "loading") return <AiOutlineLoading {...props} />;
   if (iconId === "tree") return <AiOutlineApartment {...props} />;
   if (iconId === "nested") return <BsListNested {...props} />;
+  if (iconId === "list") return <BsListUl {...props} />;
 
   return <AiOutlineFileUnknown {...props} />;
 };

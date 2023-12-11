@@ -9,11 +9,12 @@ const MainHeader = () => {
       className={classNames(
         "flex",
         "h-12",
+        "min-h-[3rem]",
         "items-center",
         "border-b",
         "bg-white",
         "px-8",
-        "text-black",
+        "text-black"
       )}
     >
       <ul className={classNames("flex", "space-x-6")}>

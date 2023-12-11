@@ -16,6 +16,11 @@ export const MAIN_MENUS: Array<{
     iconId: "nested",
   },
   {
+    name: "Suspense Example",
+    url: "/articles",
+    iconId: "list",
+  },
+  {
     name: "Temp",
     url: "/temp",
     iconId: "test",
