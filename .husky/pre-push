@@ -1,11 +1,18 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+echo "\nPre-push Hook..."
+
 # knip(사용하지 않은 파일 체크) 실행
+echo "\n>> 사용하지 않는 파일이 있는지 체크"
+
 npm run knip
 
+echo "\n>> 파일 체크 끝 -> 목록이 있다면 확인해주세요!\n"
+
 # 보호 브랜치에 푸시하고 있는지 여부 체크
-echo "\n>> Pre-push Hook: Checking branch name...\n"
+# echo "\n>> Checking branch name\n"
+echo "\n>> 보호 브랜치에 push중인지 확인\n"
 
 # 현재 체크아웃된 브랜치
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
@@ -27,6 +34,7 @@ do
   fi
 done
 
-echo ">> Finish checking branch name.\n"
+# echo ">> Finish checking branch name.\n"
+echo ">> 안전하게 push중! ^.^/\n"
 
 exit 0
