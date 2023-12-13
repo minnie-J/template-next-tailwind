@@ -21,7 +21,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <TanstackQueryProvider>
           <div className={classNames("flex", "h-full", "w-full", "flex-col")}>
             <MainHeader />
-            <div className={classNames("flex", "grow")}>{children}</div>
+            <section
+              className={classNames("flex", "grow", "bg-white", "text-black")}
+            >
+              {children}
+            </section>
           </div>
         </TanstackQueryProvider>
       </body>
