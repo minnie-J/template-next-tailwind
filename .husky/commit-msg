@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# 커밋 메시지 컨벤션에 맞게 작성했는지 체크
 npm run commitlint ${1}

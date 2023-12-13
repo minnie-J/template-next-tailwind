@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# 보호 브랜치에 커밋하고 있는지 여부 체크
 echo "\n>> Pre-commit Hook: Checking branch name...\n"
 
 # 현재 체크아웃된 브랜치
@@ -27,6 +28,6 @@ echo ">> Finish checking branch name.\n"
 
 exit 0
 
-# npm test
+# 포맷팅/린팅(현재 스테이징 되어있는 파일만)
 npx lint-staged
 

@@ -1,6 +1,12 @@
 {
-  "extends": ["next/core-web-vitals", "eslint:recommended", "prettier"],
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "prettier",
+    "plugin:@next/next/recommended"
+  ],
   "rules": {
-    "no-var": "error"
+    "no-var": "error",
+    "react/self-closing-comp": "error"
   }
 }
