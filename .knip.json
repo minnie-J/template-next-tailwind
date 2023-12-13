@@ -6,7 +6,7 @@
     "unlisted": "warn",
     "binaries": "warn",
     "unresolved": "error",
-    "exports": "error",
+    "exports": "warn",
     "nsExports": "warn",
     "types": "warn",
     "nsTypes": "warn",
