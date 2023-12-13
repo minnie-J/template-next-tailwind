@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# knip(사용하지 않은 파일 체크) 실행
+npm run knip
+
+# 보호 브랜치에 푸시하고 있는지 여부 체크
 echo "\n>> Pre-push Hook: Checking branch name...\n"
 
 # 현재 체크아웃된 브랜치
