@@ -10,8 +10,8 @@ type ApiHandler<K> = AxiosRequestConfig<K> & {
   desc?: string;
 };
 
-// const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api`;
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api`;
+// const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 // NOTE axios 인스턴스
 const request = axios.create({
@@ -49,10 +49,12 @@ export const handler = async <T, K = undefined>({
   const log = logTitle ?? url;
 
   return request<T>({ ...props, url })
-    .then(({ data }) => {
+    .then(({ data, request }) => {
       // NOTE 콘솔 로그 그룹 출력
       console.groupCollapsed(
-        `%c[${dayjs().format("YYYY-MM-DD HH:mm:ss.SSS")}] %c${log} %c${desc}`,
+        `%c[${dayjs().format("YYYY-MM-DD HH:mm:ss.SSS")}] %c${log} %c${
+          desc ?? ""
+        }`,
         "color: gray",
         "color: #ffce08",
         "color: #BDBDBD"
@@ -66,13 +68,21 @@ export const handler = async <T, K = undefined>({
       // NOTE 요청 내용
       console.groupCollapsed("request");
 
-      console.group("%cparams", "color: gray");
-      console.log(props.params);
+      console.group("%cfull url", "color: gray");
+      console.log(request.responseURL);
       console.groupEnd();
 
-      console.group("%cbody", "color: gray");
-      console.log(props.data);
-      console.groupEnd();
+      if (props.params) {
+        console.group("%cparams", "color: gray");
+        console.log(props.params);
+        console.groupEnd();
+      }
+
+      if (props.data) {
+        console.group("%cbody", "color: gray");
+        console.log(props.data);
+        console.groupEnd();
+      }
 
       console.groupEnd();
 
@@ -117,6 +127,7 @@ export const handler = async <T, K = undefined>({
         // NOTE 요청 내용
         console.groupCollapsed("request");
         console.dir(error.request);
+        console.log(error.code);
         console.groupEnd();
 
         // NOTE 응답 내용
@@ -183,6 +194,40 @@ export const listSub = ({ id, tab }: { id?: string; tab: string }) => {
   return fetch(`${API_BASE_URL}/mains/${id}/${cat}`)
     .then((res) => res.json())
     .catch((error) => console.log("error: ", error));
+};
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+export interface Article {
+  id: number;
+  user: Omit<User, "email">;
+  title: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface Page {
+  totalpages: number;
+  hasPrev: boolean;
+  hasNext: boolean;
+}
+
+type Articles = { pagination: Page; data: Array<Article> };
+
+export const articles = async ({
+  page = 1,
+  limit = 10,
+  ...props
+}: {
+  page?: number;
+  limit?: number;
+} & Omit<ApiHandler<undefined>, "url">) => {
+  const url = "/articles";
+  return await handler<Articles>({ ...props, url, params: { page, limit } });
 };
 
 // export interface APIRequest {
