@@ -1,67 +1,77 @@
 import classNames from "classnames";
 
+// export interface Columns<T> {
+//   key: T,
+//   display: string
+// }[]
+
 const Table = () => {
   const columns = Array.from({ length: 3 }).map((_, idx) => ({
-    name: `col ${idx}`,
+    key: idx,
+    display: `col${idx}`,
+  }));
+
+  const rows: Array<{ [key: string]: number | string }> = Array.from({
+    length: 2,
+  }).map((_, idx) => ({
+    id: idx,
+    col0: `cell${idx}0`,
+    col1: `cell${idx}1`,
+    col2: `cell${idx}2`,
   }));
 
   return (
-    <div className={classNames("h-full", "w-full", "table")}>
-      <table
-        className={classNames(
-          "border-separate",
-          "border-spacing-0",
-          "w-full",
-          "table-auto"
-          // !equalColumnWidth || fixedLeftIndexCount > 0
-          //   ? "table-auto"
-          //   : "table-fixed",
-        )}
-      >
-        <thead>
-          <tr className={classNames("h-9")}>
-            {columns.map(({ name }) => (
-              <th
-                key={name}
+    <div className={classNames("border", "rounded-md")}>
+      <div className={classNames("h-full", "w-full", "table")}>
+        <table
+          className={classNames("border-spacing-0", "w-full", "table-auto")}
+        >
+          <thead className={classNames("[&_tr]:border-b")}>
+            <tr
+              className={classNames(
+                "cursor-default",
+                "border-b",
+                "transition-colors",
+                "hover:bg-muted/50"
+              )}
+            >
+              {columns?.map(({ key, display }) => (
+                <th key={key} className={classNames("h-12", "px-4")}>
+                  <div>{display}</div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className={classNames("[&_tr:last-child]:border-0")}>
+            {rows.map((row) => (
+              <tr
+                key={row.id}
                 className={classNames(
-                  "group",
-                  "h-9",
-                  "p-0",
+                  "cursor-pointer",
                   "border-b",
-                  "border-[#dadada]",
-                  "bg-[#ededed]"
+                  "transition-colors",
+                  "hover:bg-stone-100/50"
                 )}
               >
-                <div>{name}</div>
-              </th>
+                {columns.map(({ key, display }) => (
+                  <td key={key} className={classNames("p-4")}>
+                    <div
+                      className={classNames(
+                        "text-ellipsis",
+                        "overflow-hidden",
+                        "whitespace-nowrap",
+                        "px-4"
+                      )}
+                    >
+                      {row[display]}
+                    </div>
+                  </td>
+                ))}
+              </tr>
             ))}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div>cell 00</div>
-            </td>
-            <td>
-              <div>cell 01</div>
-            </td>
-            <td>
-              <div>cell 02</div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div>cell 10</div>
-            </td>
-            <td>
-              <div>cell 11</div>
-            </td>
-            <td>
-              <div>cell 12</div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
