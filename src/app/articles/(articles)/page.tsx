@@ -1,62 +1,57 @@
 "use client";
 
 import { useMemo } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
-import { articles } from "@/apis";
+import { Article, articles } from "@/api/articles";
 
-import Table from "@/components/molecules/Table";
+import Table, { Columns } from "@/components/molecules/Table";
 
 const ArticlesPage = () => {
   const currentPage = useSearchParams().get("page");
 
   const page = useMemo(
-    () => (currentPage == null ? 1 : Number(currentPage)),
+    () => (currentPage == null ? 0 : Number(currentPage)),
     [currentPage]
   );
 
-  const { data: articlesData } = useQuery({
+  const { data: articlesData } = useSuspenseQuery({
     queryKey: [articles.name, { page }],
-    queryFn: () => articles({ page, desc: "ArticlesPage" }),
+    queryFn: async () => await articles({ page, desc: "ArticlesPage" }),
   });
-  console.log(
-    "🚀 ~ file: page.tsx:23 ~ ArticlesPage ~ articlesData:",
-    articlesData
-  );
 
-  // const { pagination, rows } = useMemo(() => {
-  //   if (articlesData == null) return { pagination: undefined, rows: undefined };
+  const { rows } = useMemo(() => {
+    if (articlesData == null) return { pagination: undefined, rows: undefined };
 
-  //   const { data, pagination } = articlesData;
+    const { data, pagination } = articlesData;
 
-  //   return { pagination, rows: data };
-  // }, [articlesData]);
+    return { pagination, rows: data };
+  }, [articlesData]);
 
-  // const columns = [
-  //   {
-  //     key: "id",
-  //     display: "",
-  //   },
-  //   {
-  //     key: "title",
-  //     display: "",
-  //   },
-  //   {
-  //     key: "user",
-  //     display: "",
-  //   },
-  //   {
-  //     key: "createdAt",
-  //     display: "",
-  //   },
-  // ];
+  const columns: Columns<Article> = [
+    {
+      key: "id",
+      display: "No",
+    },
+    {
+      key: "title",
+      display: "제목",
+    },
+    {
+      key: "user",
+      display: "작성자",
+      render(obj) {
+        return obj.user.name;
+      },
+    },
+    {
+      key: "createdAt",
+      display: "작성일",
+    },
+  ];
 
-  return (
-    <div>
-      <Table />
-    </div>
-  );
+  return <Table columns={columns} rows={rows} />;
 };
 
 export default ArticlesPage;
