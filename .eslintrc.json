@@ -3,10 +3,14 @@
     "next/core-web-vitals",
     "eslint:recommended",
     "prettier",
-    "plugin:@next/next/recommended"
+    "plugin:@next/next/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
+  "plugins": ["@typescript-eslint"],
   "rules": {
     "no-var": "error",
-    "react/self-closing-comp": "error"
+    "react/self-closing-comp": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error"
   }
 }
