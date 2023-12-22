@@ -12,7 +12,7 @@ export const MAIN_MENUS: Array<{
   },
   {
     name: "Prefetch Example",
-    url: "/prefetch",
+    url: "/menus",
     iconId: "nested",
   },
   {

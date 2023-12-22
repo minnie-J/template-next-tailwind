@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { Metadata } from "next";
 import classNames from "classnames";
 
-import { listMain } from "@/apis";
+import { listMain } from "@/api/menus";
 
 import SplitLayout from "@/components/templates/SplitLayout";
 import TestSidebar from "@/components/organisms/TestSidebar";
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function PrefetchLayout({
+export default async function MenusLayout({
   children,
 }: {
   children: ReactNode;

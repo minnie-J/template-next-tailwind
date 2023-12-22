@@ -4,7 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import classNames from "classnames";
 
-import { listMain } from "@/apis";
+import { listMain } from "@/api/menus";
 
 const TestSidebar = () => {
   const { data: mainDatas, isLoading } = useQuery<
@@ -25,7 +25,7 @@ const TestSidebar = () => {
         <div className={classNames("flex", "items-center", "justify-center")}>
           loading...
         </div>
-      ) : mainDatas ? (
+      ) : mainDatas?.length ? (
         mainDatas.map(({ id, name }) => (
           <div
             key={id}

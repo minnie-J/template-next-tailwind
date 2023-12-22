@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import classNames from "classnames";
 
-import { listSub } from "@/apis";
+import { listSub } from "@/api/menus";
 import { DETAIL_MENUS } from "@/constants";
 
 import SplitLayout from "@/components/templates/SplitLayout";
@@ -14,7 +14,7 @@ import SubMenuItem from "@/components/atoms/SubMenuItem";
 const tabKeys = DETAIL_MENUS.map(({ key }) => key);
 type TabType = (typeof tabKeys)[number];
 
-const DetailPage = () => {
+const MenuPage = () => {
   const { id } = useParams();
 
   const [currentTab, setCurrentTab] = useState<TabType>("sub1");
@@ -58,4 +58,4 @@ const DetailPage = () => {
   );
 };
 
-export default DetailPage;
+export default MenuPage;
