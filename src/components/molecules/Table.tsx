@@ -1,25 +1,23 @@
+import { ReactNode } from "react";
+
 import classNames from "classnames";
 
-// export interface Columns<T> {
-//   key: T,
-//   display: string
-// }[]
+interface Column<T> {
+  key: keyof T;
+  display: string;
+  render?: (obj: T) => ReactNode;
+}
 
-const Table = () => {
-  const columns = Array.from({ length: 3 }).map((_, idx) => ({
-    key: idx,
-    display: `col${idx}`,
-  }));
+export type Columns<T> = Array<Column<T>>;
+export type Rows<T> = Array<T>;
 
-  const rows: Array<{ [key: string]: number | string }> = Array.from({
-    length: 2,
-  }).map((_, idx) => ({
-    id: idx,
-    col0: `cell${idx}0`,
-    col1: `cell${idx}1`,
-    col2: `cell${idx}2`,
-  }));
-
+const Table = <T extends object>({
+  columns,
+  rows,
+}: {
+  columns: Columns<T>;
+  rows?: Rows<T>;
+}) => {
   return (
     <div className={classNames("border", "rounded-md")}>
       <div className={classNames("h-full", "w-full", "table")}>
@@ -36,16 +34,16 @@ const Table = () => {
               )}
             >
               {columns?.map(({ key, display }) => (
-                <th key={key} className={classNames("h-12", "px-4")}>
+                <th key={key as string} className={classNames("h-12", "px-4")}>
                   <div>{display}</div>
                 </th>
               ))}
             </tr>
           </thead>
           <tbody className={classNames("[&_tr:last-child]:border-0")}>
-            {rows.map((row) => (
+            {rows?.map((row, idx) => (
               <tr
-                key={row.id}
+                key={idx}
                 className={classNames(
                   "cursor-pointer",
                   "border-b",
@@ -53,8 +51,8 @@ const Table = () => {
                   "hover:bg-stone-100/50"
                 )}
               >
-                {columns.map(({ key, display }) => (
-                  <td key={key} className={classNames("p-4")}>
+                {columns?.map(({ key, render }) => (
+                  <td key={key as string} className={classNames("p-4")}>
                     <div
                       className={classNames(
                         "text-ellipsis",
@@ -63,7 +61,7 @@ const Table = () => {
                         "px-4"
                       )}
                     >
-                      {row[display]}
+                      {render ? render(row) : `${row[key]}`}
                     </div>
                   </td>
                 ))}
