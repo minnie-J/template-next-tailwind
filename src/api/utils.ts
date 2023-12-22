@@ -2,8 +2,8 @@ import axios, { AxiosError, AxiosRequestConfig } from "axios";
 import dayjs from "dayjs";
 // import { JWT } from "next-auth/jwt";
 
-type ApiHandler<K> = AxiosRequestConfig<K> & {
-  url: string;
+export type ApiHandler<K = undefined> = AxiosRequestConfig<K> & {
+  // url: string;
   apiVersion?: string;
   token?: string;
   logTitle?: string;
@@ -14,7 +14,7 @@ const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api`;
 // const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 // NOTE axios 인스턴스
-const request = axios.create({
+export const request = axios.create({
   baseURL: API_BASE_URL,
 });
 
@@ -29,7 +29,7 @@ const request = axios.create({
  * @param {AxiosRequestConfig} AxiosRequestConfig https://axios-http.com/kr/docs/req_config 참고
  * @returns {Promise<T>} 응답 status가 200일 때 data
  */
-export const handler = async <T, K = undefined>({
+export const apiHandler = async <T, K = undefined>({
   url: path,
   apiVersion,
   token,
@@ -37,6 +37,7 @@ export const handler = async <T, K = undefined>({
   desc,
   ...props
 }: ApiHandler<K>) => {
+  if (!path) return;
   // if (useToken) {
   //   const accessToken = await getToken();
   //   accessToken && setToken(accessToken);
@@ -48,8 +49,10 @@ export const handler = async <T, K = undefined>({
 
   const log = logTitle ?? url;
 
-  return request<T>({ ...props, url })
-    .then(({ data, request }) => {
+  return await request<T>({ ...props, url })
+    .then((response) => {
+      const { data, request } = response;
+
       // NOTE 콘솔 로그 그룹 출력
       console.groupCollapsed(
         `%c[${dayjs().format("YYYY-MM-DD HH:mm:ss.SSS")}] %c${log} %c${
@@ -182,53 +185,6 @@ export const setToken = (token: string) =>
 //   await axios<JWT>(`${window.location.origin}/api/auth/jwt`).then(
 //     ({ data }) => data.accessToken
 //   );
-
-export const listMain = () =>
-  fetch(`${API_BASE_URL}/mains`)
-    .then((res) => res.json())
-    .catch((error) => console.log("error: ", error));
-
-export const listSub = ({ id, tab }: { id?: string; tab: string }) => {
-  const cat = tab === "sub1" ? "subs1" : "subs2";
-
-  return fetch(`${API_BASE_URL}/mains/${id}/${cat}`)
-    .then((res) => res.json())
-    .catch((error) => console.log("error: ", error));
-};
-
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
-export interface Article {
-  id: number;
-  user: Omit<User, "email">;
-  title: string;
-  content: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-interface Page {
-  totalpages: number;
-  hasPrev: boolean;
-  hasNext: boolean;
-}
-
-type Articles = { pagination: Page; data: Array<Article> };
-
-export const articles = async ({
-  page = 1,
-  limit = 10,
-  ...props
-}: {
-  page?: number;
-  limit?: number;
-} & Omit<ApiHandler<undefined>, "url">) => {
-  const url = "/articles";
-  return await handler<Articles>({ ...props, url, params: { page, limit } });
-};
 
 // export interface APIRequest {
 //   key: string | Array<string>;
