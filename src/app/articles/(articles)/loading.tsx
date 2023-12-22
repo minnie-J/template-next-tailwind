@@ -1,21 +1,5 @@
-import classNames from "classnames";
-import React from "react";
+import Loading from "@/components/atoms/Loading";
 
-const Loading = () => {
-  return (
-    <div
-      className={classNames(
-        "flex",
-        "flex-grow",
-        "h-full",
-        "max-h-[38rem]",
-        "items-center",
-        "justify-center"
-      )}
-    >
-      loading...
-    </div>
-  );
-};
-
-export default Loading;
+export default function ArticleLoading() {
+  return <Loading maxHeight="38rem" />;
+}
