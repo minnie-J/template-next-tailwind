@@ -1,16 +1,17 @@
 import { ReactNode } from "react";
 import { Metadata } from "next";
-import classNames from "classnames";
-
-import { listMain } from "@/api/menus";
-
-import SplitLayout from "@/components/templates/SplitLayout";
-import TestSidebar from "@/components/organisms/TestSidebar";
 import {
   HydrationBoundary,
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
+import classNames from "classnames";
+
+import { listMain } from "@/api/menus";
+
+import SplitLayout from "@/components/templates/SplitLayout";
+
+import Sidebar from "./sidebar";
 
 export const metadata: Metadata = {
   title: "Nested Menus(Prefetch)",
@@ -51,7 +52,7 @@ export default async function MenusLayout({
           <div className="w-full">
             {/* NOTE SSR */}
             <HydrationBoundary state={dehydrate(queryClient)}>
-              <TestSidebar />
+              <Sidebar />
             </HydrationBoundary>
           </div>
         </Element>
