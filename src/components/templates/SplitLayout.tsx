@@ -1,4 +1,4 @@
-import { Children, ReactNode } from "react";
+import { CSSProperties, Children, ReactNode } from "react";
 import classNames from "classnames";
 
 const SplitLayout = ({
@@ -24,21 +24,27 @@ const Element = ({
   children,
   height,
   width,
+  className,
+  style,
 }: {
   children: ReactNode;
   height?: number;
   width?: number;
+  className?: string;
+  style?: CSSProperties;
 }) => {
+  const size: CSSProperties = height
+    ? { height: `${height}px`, minHeight: `${height}px` }
+    : width
+      ? { width: `${width}px`, minWidth: `${width}px` }
+      : { flexGrow: 1 };
+
+  const styleOverride = Object.assign(size, style);
+
   return (
     <div
-      className={classNames("flex", "h-full")}
-      style={
-        height
-          ? { height: `${height}px`, minHeight: `${height}px` }
-          : width
-            ? { width: `${width}px`, minWidth: `${width}px` }
-            : { flexGrow: 1 }
-      }
+      className={classNames("flex", "h-full", className)}
+      style={styleOverride}
     >
       {children}
     </div>
