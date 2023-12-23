@@ -1,7 +1,7 @@
 import { MAIN_MENUS } from "@/constants";
 import classNames from "classnames";
 
-import MainMenuItem from "@/components/molecules/MainMenuItem";
+import MainMenuItem from "@/components/molecules/main-menu-item";
 
 const MainHeader = () => {
   return (

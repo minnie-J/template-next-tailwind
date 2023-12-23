@@ -9,7 +9,7 @@ import classNames from "classnames";
 
 import { listMain } from "@/api/menus";
 
-import SplitLayout from "@/components/templates/SplitLayout";
+import SplitLayout from "@/components/templates/split-layout";
 
 import Sidebar from "./sidebar";
 
@@ -49,12 +49,10 @@ export default async function MenusLayout({
     <section className={classNames("flex", "grow", "bg-white", "text-black")}>
       <SplitLayout>
         <Element width={300}>
-          <div className="w-full">
-            {/* NOTE SSR */}
-            <HydrationBoundary state={dehydrate(queryClient)}>
-              <Sidebar />
-            </HydrationBoundary>
-          </div>
+          {/* NOTE SSR */}
+          <HydrationBoundary state={dehydrate(queryClient)}>
+            <Sidebar />
+          </HydrationBoundary>
         </Element>
         <Element>{children}</Element>
       </SplitLayout>

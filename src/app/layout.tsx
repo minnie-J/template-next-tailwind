@@ -6,7 +6,7 @@ import { inter } from "fonts";
 import { TanstackQueryProvider } from "@/lib";
 import "./globals.css";
 
-import MainHeader from "@/components/organisms/MainHeader";
+import MainHeader from "@/components/organisms/main-header";
 
 export const metadata: Metadata = {
   title: "Home",

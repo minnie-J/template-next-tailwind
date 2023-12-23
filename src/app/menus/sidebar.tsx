@@ -7,7 +7,7 @@ import classNames from "classnames";
 
 import { listMain } from "@/api/menus";
 
-import Loading from "@/components/atoms/Loading";
+import Loading from "@/components/atoms/loading";
 
 const Sidebar = () => {
   const params = useParams();

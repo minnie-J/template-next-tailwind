@@ -1,4 +1,4 @@
-import Wireframe from "@/components/atoms/Wireframe";
+import Wireframe from "@/components/atoms/wireframe";
 
 const TempPage = () => {
   return <Wireframe>Tree</Wireframe>;

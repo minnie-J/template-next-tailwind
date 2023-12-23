@@ -1,7 +1,7 @@
 import Link from "next/link";
 import classNames from "classnames";
 
-import Icon, { IconIdType } from "@/components/atoms/Icon";
+import Icon, { IconIdType } from "@/components/atoms/icon";
 
 const MainMenuItem = ({
   url,

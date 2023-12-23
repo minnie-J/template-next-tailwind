@@ -6,7 +6,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 
 import { Article, articles } from "@/api/articles";
 
-import Table, { Columns } from "@/components/molecules/Table";
+import Table, { Columns } from "@/components/molecules/table";
 
 const ArticlesPage = () => {
   const currentPage = useSearchParams().get("page");
