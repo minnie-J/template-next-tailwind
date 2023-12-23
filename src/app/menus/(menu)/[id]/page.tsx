@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import classNames from "classnames";
 
@@ -14,9 +13,7 @@ import SubMenuItem from "@/components/atoms/SubMenuItem";
 const tabKeys = DETAIL_MENUS.map(({ key }) => key);
 type TabType = (typeof tabKeys)[number];
 
-const MenuPage = () => {
-  const { id } = useParams();
-
+const MenuPage = ({ params: { id } }: { params: { id: string } }) => {
   const [currentTab, setCurrentTab] = useState<TabType>("sub1");
 
   const { data } = useQuery<Array<{ id: string; name: string }>>({
@@ -27,32 +24,22 @@ const MenuPage = () => {
   const { Element } = SplitLayout;
   return (
     <SplitLayout direction="vertical">
-      <Element height={50}>
-        <div
-          className={classNames(
-            "flex",
-            "grow",
-            "h-full",
-            "bg-gray-200",
-            "text-gray-400"
-          )}
-        >
-          {DETAIL_MENUS.map(({ name, key }) => (
-            <SubMenuItem
-              key={key}
-              isActive={currentTab === key}
-              onClick={() => setCurrentTab(key)}
-            >
-              {name}
-            </SubMenuItem>
-          ))}
-        </div>
+      <Element
+        className={classNames("grow", "bg-gray-200", "text-gray-400")}
+        height={50}
+      >
+        {DETAIL_MENUS.map(({ name, key }) => (
+          <SubMenuItem
+            key={key}
+            isActive={currentTab === key}
+            onClick={() => setCurrentTab(key)}
+          >
+            {name}
+          </SubMenuItem>
+        ))}
       </Element>
-      <Element>
-        <div className={classNames("flex", "flex-col", "border-l")}>
-          {data?.length != null &&
-            data?.map(({ id, name }) => <div key={id}>{name}</div>)}
-        </div>
+      <Element className={classNames("flex-col", "border-l")}>
+        {data?.map(({ id, name }) => <div key={id}>{name}</div>)}
       </Element>
     </SplitLayout>
   );
