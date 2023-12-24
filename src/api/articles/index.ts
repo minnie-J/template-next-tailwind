@@ -84,6 +84,5 @@ export const articles = async ({
   }).finally(() => {
     request.interceptors.request.eject(req);
     request.interceptors.response.eject(res);
-    console.log("Interceptors:", request.interceptors);
   });
 };

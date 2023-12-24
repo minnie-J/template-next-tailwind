@@ -17,8 +17,8 @@ const MenuPage = ({ params: { id } }: { params: { id: string } }) => {
   const [currentTab, setCurrentTab] = useState<TabType>("sub1");
 
   const { data } = useQuery<Array<{ id: string; name: string }>>({
-    queryKey: ["subData", { id, tab: currentTab }],
-    queryFn: () => listSub({ id: `${id}`, tab: currentTab }),
+    queryKey: [listSub.name, { id, tab: currentTab }],
+    queryFn: () => listSub({ id, tab: currentTab }),
   });
 
   const { Element } = SplitLayout;

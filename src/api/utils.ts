@@ -2,14 +2,6 @@ import axios, { AxiosError, AxiosRequestConfig } from "axios";
 import dayjs from "dayjs";
 // import { JWT } from "next-auth/jwt";
 
-export type ApiHandler<K = undefined> = AxiosRequestConfig<K> & {
-  // url: string;
-  apiVersion?: string;
-  token?: string;
-  logTitle?: string;
-  desc?: string;
-};
-
 const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api`;
 // const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -17,6 +9,14 @@ const API_BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api`;
 export const request = axios.create({
   baseURL: API_BASE_URL,
 });
+
+export type ApiHandler<K = undefined> = AxiosRequestConfig<K> & {
+  // url: string;
+  apiVersion?: string;
+  token?: string;
+  logTitle?: string;
+  desc?: string;
+};
 
 /**
  * NOTE
@@ -339,7 +339,6 @@ export const setToken = (token: string) =>
 
 /**
  * TODO
- * - api util 정리
  * - loading/error 처리 화면
  * - storybook
  * - 테스트 코드

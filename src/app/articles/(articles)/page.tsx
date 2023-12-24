@@ -1,21 +1,23 @@
 "use client";
 
 import { useMemo } from "react";
-import { useSearchParams } from "next/navigation";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
 import { Article, articles } from "@/api/articles";
 
 import Table, { Columns } from "@/components/molecules/table";
 
-const ArticlesPage = () => {
-  const currentPage = useSearchParams().get("page");
-
+const ArticlesPage = ({
+  searchParams: { page: currentPage },
+}: {
+  searchParams: { page: string };
+}) => {
   const page = useMemo(
     () => (currentPage == null ? 0 : Number(currentPage)),
     [currentPage]
   );
 
+  // NOTE Suspense
   const { data: articlesData } = useSuspenseQuery({
     queryKey: [articles.name, { page }],
     queryFn: async () => await articles({ page, desc: "ArticlesPage" }),
