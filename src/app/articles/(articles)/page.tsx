@@ -43,9 +43,7 @@ const ArticlesPage = ({
     {
       key: "user",
       display: "작성자",
-      render(obj) {
-        return obj.user.name;
-      },
+      render: (obj) => obj.user.name,
     },
     {
       key: "createdAt",

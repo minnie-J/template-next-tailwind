@@ -14,8 +14,8 @@ const ArticlesLayout = ({ children }: { children: ReactNode }) => {
         )}
       >
         <div className={classNames("flex", "flex-col", "gap-1")}>
-          <h1 className={classNames("text-4xl", "font-bold")}>title area</h1>
-          <p>description</p>
+          <h1 className={classNames("text-4xl", "font-bold")}>Articles</h1>
+          <p>게시판 예제</p>
         </div>
         {children}
       </div>
