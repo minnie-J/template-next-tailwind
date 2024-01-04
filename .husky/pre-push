@@ -35,6 +35,6 @@ do
 done
 
 # echo ">> Finish checking branch name.\n"
-echo ">> 안전하게 push중! ^.^/\n"
+echo ">> 확인 완료 -> 안전하게 push중! ^.^/\n"
 
 exit 0
