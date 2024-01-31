@@ -14,9 +14,11 @@ export type Rows<T> = Array<T>;
 const Table = <T extends object>({
   columns,
   rows,
+  onClickRow,
 }: {
   columns: Columns<T>;
   rows?: Rows<T>;
+  onClickRow?: (rowData?: T) => void;
 }) => {
   return (
     <div className={classNames("border", "rounded-md")}>
@@ -50,6 +52,7 @@ const Table = <T extends object>({
                   "transition-colors",
                   "hover:bg-stone-100/50"
                 )}
+                onClick={() => onClickRow && onClickRow(row)}
               >
                 {columns?.map(({ key, render }) => (
                   <td key={key as string} className={classNames("p-4")}>

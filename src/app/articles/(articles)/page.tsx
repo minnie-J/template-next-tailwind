@@ -51,7 +51,11 @@ const ArticlesPage = ({
     },
   ];
 
-  return <Table columns={columns} rows={rows} />;
+  const onClickRow = (row?: Article) => {
+    console.log("🚀 ~ onClickRow ~ row:", row);
+  };
+
+  return <Table columns={columns} rows={rows} onClickRow={onClickRow} />;
 };
 
 export default ArticlesPage;
