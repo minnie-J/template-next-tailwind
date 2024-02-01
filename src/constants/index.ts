@@ -1,4 +1,4 @@
-import { IconIdType } from "@/components/atoms/icon";
+import { IconIdType } from "@/components/atoms/Icon";
 
 export const MAIN_MENUS: Array<{
   name: string;

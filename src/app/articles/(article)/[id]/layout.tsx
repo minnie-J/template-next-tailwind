@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import classNames from "classnames";
 
-import SplitLayout from "@/components/templates/split-layout";
+import SplitLayout from "@/components/templates/SplitLayout";
 
 const ArticleLayout = ({
   children,

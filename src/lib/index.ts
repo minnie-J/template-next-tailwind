@@ -1,5 +1,5 @@
 // import AntdResistry from "./AntdRegistry";
-import TanstackQueryProvider from "./tanstack-query-provider";
+import TanstackQueryProvider from "./TanstackQueryProvider";
 
 export {
   // AntdResistry,

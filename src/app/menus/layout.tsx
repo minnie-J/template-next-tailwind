@@ -9,7 +9,7 @@ import classNames from "classnames";
 
 import { listMain } from "@/api/menus";
 
-import SplitLayout from "@/components/templates/split-layout";
+import SplitLayout from "@/components/templates/SplitLayout";
 
 import Sidebar from "./sidebar";
 
