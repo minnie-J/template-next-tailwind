@@ -2,8 +2,10 @@
 
 import { useMemo } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import classNames from "classnames";
 
 import { Article, articles } from "@/api/articles";
+import { useModal } from "@/hooks";
 
 import Table, { Columns } from "@/components/molecules/Table";
 
@@ -51,11 +53,91 @@ const ArticlesPage = ({
     },
   ];
 
+  const {
+    setModal: setModalAlpha,
+    modalPortal: modalAlpha,
+    closeModal: closeAlpha,
+  } = useModal();
+  const {
+    setModal: setModalBeta,
+    modalPortal: modalBeta,
+    closeModal: closeBeta,
+  } = useModal();
   const onClickRow = (row?: Article) => {
     console.log("🚀 ~ onClickRow ~ row:", row);
+    setModalAlpha(
+      <div
+        className={classNames(
+          "w-full",
+          "h-full",
+          "flex",
+          "items-center",
+          "justify-center",
+          "fixed",
+          "inset-0",
+          "bg-[rgba(0,0,0,0.34)]"
+        )}
+        onClick={closeAlpha}
+      >
+        <div
+          className={classNames(
+            "w-60",
+            "h-28",
+            "p-8",
+            "flex",
+            "items-center",
+            "justify-center",
+            "bg-white",
+            "text-black"
+          )}
+          onClick={(e) => {
+            e.stopPropagation();
+            setModalBeta(
+              <div
+                className={classNames(
+                  "w-full",
+                  "h-full",
+                  "flex",
+                  "items-center",
+                  "justify-center",
+                  "fixed",
+                  "inset-0",
+                  "bg-[rgba(0,0,0,0.34)]"
+                )}
+                onClick={closeBeta}
+              >
+                <div
+                  className={classNames(
+                    "w-36",
+                    "h-20",
+                    "p-8",
+                    "flex",
+                    "items-center",
+                    "justify-center",
+                    "bg-white",
+                    "text-black"
+                  )}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  테스트2
+                </div>
+              </div>
+            );
+          }}
+        >
+          테스트1
+        </div>
+      </div>
+    );
   };
 
-  return <Table columns={columns} rows={rows} onClickRow={onClickRow} />;
+  return (
+    <>
+      {modalBeta}
+      {modalAlpha}
+      <Table columns={columns} rows={rows} onClickRow={onClickRow} />;
+    </>
+  );
 };
 
 export default ArticlesPage;
