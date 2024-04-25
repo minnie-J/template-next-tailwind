@@ -26,8 +26,9 @@ done
 
 echo ">> Finish checking branch name.\n"
 
-exit 0
+# exit 0
 
 # 포맷팅/린팅(현재 스테이징 되어있는 파일만)
 npx lint-staged
 
+echo "\n>> 린트 통과!\n"
